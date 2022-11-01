@@ -1,6 +1,10 @@
 #include <iostream>
-
+#include <fstream>
+#include <cstring>
+#include <windows.h>
+#include "vercontrol.h"
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    rsasm::version_control();
+
     return 0;
 }
