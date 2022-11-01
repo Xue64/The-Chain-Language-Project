@@ -8,7 +8,7 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ## What is RS-ASM?
-The Relatively Simpler Assembly (RSASM) is an interpreted programming language built for educational purposes-- to help educate new programmers towards ASM. 
+The Relatively Simpler Assembly (RSASM) is an virtual machine for the RSASM programming language built for educational purposes-- to help educate new programmers towards ASM. 
 
 ## RS-ASM vs RelativelySimpler CPU, which should I install?
 The RelativelySimpler CPU (RSCPU) is a small project meant for basic ASM commands. However, it has some integaral design flaws that makes it hard to use. These points are only a part of our rationale as to why the change was done:
@@ -44,4 +44,4 @@ The RelativelySimpler CPU (RSCPU) is a small project meant for basic ASM command
         
    - The RS ASM also installs directly to your PC and is run directly in the command line using the Windows Shell or the Command Prompt, just enter RSASM in the command line to run.
    - Now as 64kb of memory!
-   - Now runs as an interpreter
+   - Now runs as an virtual machine
