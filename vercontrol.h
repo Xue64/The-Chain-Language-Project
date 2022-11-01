@@ -125,6 +125,7 @@ namespace rsasm {
 
 
 
+
     void version_control(){
         const char * curr_version = CURR_VER;
 
@@ -147,6 +148,7 @@ namespace rsasm {
             } else {
 
                 std::cout << "\n\nA new version is available! Please go to the update settings using the \"$update\" command.\n";
+                std::cout << "Current available version for download: " << remote_ver;
             }
 
         }
