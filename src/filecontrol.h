@@ -8,15 +8,18 @@
 #include <string>
 #include <cstring>
 #include <iostream>
+#include "error.h"
 
 
-namespace rsasm{
+namespace chain{
     namespace file {
+
+        //deprecated method, please change
         void invoke_file(std::string file_name){
             std::fstream bytecode;
             bytecode.open(file_name, std::ios::in);
             if (!bytecode){
-                std::cout << "did not find the specified file in the directory.\n";
+                chain::throw_error::invalid_file_extension();
                 return;
             }
             char filename[8];
@@ -28,7 +31,7 @@ namespace rsasm{
             }
             filename[7] = '\0';
             if (strcmp(filename, ".ccbyte")){
-                std::cout << "Incompatible file extension. RS ASM only reads .ccbyte files.\n";
+
                 return;
             }
             while (true){

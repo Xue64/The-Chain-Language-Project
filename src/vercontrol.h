@@ -11,6 +11,7 @@
 #include <fstream>
 #include <cstring>
 #include <windows.h>
+#include "error.h"
 
 #include <string>
 #include <ShellAPI.h>
@@ -46,7 +47,7 @@ namespace shell{
 }
 
 
-namespace rsasm {
+namespace chain {
 
     bool connected;
 
@@ -56,47 +57,13 @@ namespace rsasm {
 
     namespace install {
 
-        void install_gcc(){
-            std::cout << "\nDo you have gcc installed? GCC is a dependency for installation. [Y/N]: ";
-            char c;
-            std::cin >> c;
-            if (c=='Y'){
-
-            } else if (c=='N'){
-                std::cout << "We will install gcc for you. Is that okay? [Y/N]: ";
-                std::cin >> c;
-                if (c=='Y'){
-                    std::cout << "We are opening the website to help you install gcc.\n";
-                    system("start iexplore https://gcc.gnu.org/install/");
-                    getchar();
-                    getchar();
-                    exit(0);
-                } else {
-                    std::cout << "Now terminating process...\n";
-                    getchar();
-                    exit(0);
-                }
-            } else {
-                std::cout << "Invalid input. Please try again.";
-                install_gcc();
-            }
-        }
-
-        void install_git(){
-            if (system("git -v")){
-                std::cout << "\nGit is not installed.\n";
-            } else {
-                (system("winget install git.git"));
-            }
-
-        }
 
         void install_update (){
             std::cout << "Checking for internet availability, this may take a while...\n";
             connected = system("ping google.com > null");
             connected = !connected;
             if(!get_internet()){
-                std::cout << "Cannot install update, please check your internet privileges.\n";
+                chain::throw_error::no_internet();
                 return;
             }
             std::cout << "\nDo you have git installed? Git is a dependency for installation. [Y/N]: ";
@@ -118,7 +85,6 @@ namespace rsasm {
                 std::cout << "Invalid input. Please try again.";
                 install_update();
             }
-            install_gcc();
         }
 
     }
@@ -131,13 +97,13 @@ namespace rsasm {
 
         std::fstream version_control;
 
-        shell::system_no_output("cd RSASM-Files && git pull CubeClub-RSASM-Ver-Checker > nul");
-        version_control.open("RSASM-Files\\updater.txt", std::ios::in);
+        shell::system_no_output("cd chain-Files && git pull CubeClub-chain-Ver-Checker > nul");
+        version_control.open("updater.txt", std::ios::in);
 
 			
 			
         if (!version_control){
-            std::cout << "\nUpon invoking of system file integrity check, found one (1) vulnerability. Version control dependency not found.\nWill be unable to update this installation of RS ASM.\n";
+            chain::throw_error::updater_not_found();
 
 
         } else {
@@ -147,8 +113,7 @@ namespace rsasm {
 
             } else {
 
-                std::cout << "\n\nA new version is available! Please go to the update settings using the \"$update\" command.\n";
-                std::cout << "Current available version for download: " << remote_ver;
+                chain::throw_error::update_available(remote_ver);
             }
 
         }

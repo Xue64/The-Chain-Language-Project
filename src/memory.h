@@ -9,7 +9,7 @@
 #include <cstdlib>
 #include <iostream>
 
-namespace rsasm {
+namespace chain {
 
     class Memory {
     public:
@@ -56,7 +56,7 @@ namespace rsasm {
     };
 
     namespace debug {
-        void print_RAM (rsasm::Memory * memory){
+        void print_RAM (chain::Memory * memory){
             for (int i=0; i<memory->MEMORY_CAPACITY; i++){
                 int zero = 10000;
                 std::cout << i;
