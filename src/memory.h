@@ -8,7 +8,6 @@
 #include <cmath>
 #include <cstdlib>
 #include <iostream>
-
 namespace chain {
 
     class Memory {

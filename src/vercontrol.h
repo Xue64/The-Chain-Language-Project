@@ -5,14 +5,14 @@
 #ifndef CUBECLUB_RS_ASM_VERCONTROL_H
 #define CUBECLUB_RS_ASM_VERCONTROL_H
 
-#define CURR_VER "alpha 0.0.1"
+
 
 #include <iostream>
 #include <fstream>
 #include <cstring>
 #include <windows.h>
 #include "error.h"
-
+#include "chainmacro.h"
 #include <string>
 #include <ShellAPI.h>
 
