@@ -42,6 +42,6 @@ The RelativelySimpler CPU (RSCPU) is a small project meant for basic ASM command
         SAVE, 3
         ORG, 12
         
-   - The RS ASM also installs directly to your PC and is run directly in the command line using the Windows Shell or the Command Prompt, just enter chain in the command line to run.
+   - The Chain also installs directly to your PC and is run directly in the command line using the Windows Shell or the Command Prompt, just enter chain in the command line to run.
    - Now as 64kb of memory!
    - Now runs as an virtual machine
