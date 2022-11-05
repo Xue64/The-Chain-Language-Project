@@ -28,11 +28,11 @@ namespace chain {
         }
 
         void file_not_found (){
-            std::cout << "Error IN2: File not found, the specified file input cannot be found in the directory. Check the filename specified and make sure that the file ends in either “.cc” or “.ccbyte”.\n";
+            std::cout << "Error IN2: File not found, the specified file input cannot be found in the directory.\n\tCheck the filename specified and make sure that the file ends in either .cc or .ccbyte.\n";
         }
 
         void invalid_file_extension(){
-            std::cout << "Error IN3: Invalid file extension, the specified file is not compatible with the CVM. The CVM can only execute .ccbyte files and can only read .cc files.\n";
+            std::cout << "Error IN3: Invalid file extension, the specified file is not compatible with the CVM.\n\tThe CVM can only execute .ccbyte files and can only read .cc files.\n";
         }
 
     }
