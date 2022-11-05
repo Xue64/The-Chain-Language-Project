@@ -51,12 +51,15 @@ namespace chain{
             }
             std::vector<std::string> * file_parsed = new std::vector<std::string>();
             while (true){
-                std::string stream;
-                std::getline(bytecode, stream);
-                file_parsed->push_back(stream);
                 if (bytecode.eof()){
                     break;
                 }
+                std::string stream;
+                std::getline(bytecode, stream);
+                if (stream.find_first_not_of(' ')==std::string::npos){
+                    continue;
+                }
+                file_parsed->push_back(stream);
             }
             return file_parsed;
 

@@ -18,9 +18,13 @@ namespace chain {
         void file_encryptor (std::vector<std::string> * file){
 
             for (int i=0; i<file->size(); i++){
+                std::cout << "Now encrypting\n";
                 (*file)[i] = trex::encrypt((*file)[i]);
+                std::cout << "At line " << i+1 << ": " << (*file)[i] << std::endl;
             }
         }
+
+
 
         void file_printer (std::vector<std::string> file_vector) {
             for (int i = 0; i<file_vector.size(); i++){

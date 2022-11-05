@@ -20,6 +20,5 @@ _ccmain_ { //execution starts here
     } else {
         // chain::terminal::event_loop();
     }
-    chain::terminal::end_process();
     return 0;
 }

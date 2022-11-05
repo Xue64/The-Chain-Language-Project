@@ -17,7 +17,7 @@ namespace chain {
         const int BASIC_CAPACITY = 8; // 8-bit capacity
         const int ADVANCED_CAPACITY = 16;
 
-        int ** RAM, * AC, * R, * PC, * AR;
+        int ** RAM, * AC, * R, * PC, * AR, * ACx, * ACy, * Rx, * Ry;
         int Z;
         Memory(){
             RAM = (int**)malloc(sizeof(int*)*MEMORY_CAPACITY);
@@ -30,6 +30,10 @@ namespace chain {
             R = new int[ADVANCED_CAPACITY];
             PC = new int[ADVANCED_CAPACITY];
             AR = new int[ADVANCED_CAPACITY];
+            ACx = AC;
+            ACy = AC+BASIC_CAPACITY;
+            Rx = R;
+            Ry = R+BASIC_CAPACITY;
             std::map<std::string, int> * label = new std::map<std::string, int>(); //hashmap for loop labels
             clearMemory();
 
@@ -46,12 +50,82 @@ namespace chain {
                 AC[i] = 0;
                 R[i] = 0;
                 PC[i] = 0;
-                AR[0] = 0;
+                AR[i] = 0;
             }
             Z = 0;
+
             return;
 
         }
+
+        void view_registers() {
+            std::cout << "AC = [";
+            for (int i=0; i<ADVANCED_CAPACITY; i++){
+                std::cout << AC[i];
+                if (i!=ADVANCED_CAPACITY-1){
+                    std::cout << ", ";
+                }
+            } std::cout << "]\n";
+
+            std::cout << "ACx = [";
+            for (int i=0; i<BASIC_CAPACITY; i++){
+                std::cout << ACx[i];
+                if (i!=BASIC_CAPACITY-1){
+                    std::cout << ", ";
+                }
+            } std::cout << "]\n";
+
+            std::cout << "ACy = [";
+            for (int i=0; i<BASIC_CAPACITY; i++){
+                std::cout << ACy[i];
+                if (i!=BASIC_CAPACITY-1){
+                    std::cout << ", ";
+                }
+            } std::cout << "]\n";
+
+            std::cout << "R = [";
+            for (int i=0; i<ADVANCED_CAPACITY; i++){
+                std::cout << R[i];
+                if (i!=ADVANCED_CAPACITY-1){
+                    std::cout << ", ";
+                }
+            } std::cout << "]\n";
+
+            std::cout << "Rx = [";
+            for (int i=0; i<BASIC_CAPACITY; i++){
+                std::cout << Rx[i];
+                if (i!=BASIC_CAPACITY-1){
+                    std::cout << ", ";
+                }
+            } std::cout << "]\n";
+
+            std::cout << "Ry = [";
+            for (int i=0; i<BASIC_CAPACITY; i++){
+                std::cout << Ry[i];
+                if (i!=BASIC_CAPACITY-1){
+                    std::cout << ", ";
+                }
+            } std::cout << "]\n";
+
+            std::cout << "AR = [";
+            for (int i=0; i<ADVANCED_CAPACITY; i++){
+                std::cout << AR[i];
+                if (i!=ADVANCED_CAPACITY-1){
+                    std::cout << ", ";
+                }
+            } std::cout << "]\n";
+
+            std::cout << "PC = [";
+            for (int i=0; i<ADVANCED_CAPACITY; i++){
+                std::cout << PC[i];
+                if (i!=ADVANCED_CAPACITY-1){
+                    std::cout << ", ";
+                }
+            } std::cout << "]\n";
+
+            std::cout << "Z = [" << Z << "]\n";
+        }
+
     };
 
     namespace debug {
@@ -91,6 +165,8 @@ namespace chain {
                 std::cout << std::endl;
             }
         }
+
+
     }
 
 
