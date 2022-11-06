@@ -2,6 +2,12 @@
 // Created by Rufelle on 02/11/2022.
 //
 
+
+
+
+
+
+
 #ifndef CUBECLUB_RS_ASM_FILECONTROL_H
 #define CUBECLUB_RS_ASM_FILECONTROL_H
 #include <fstream>
@@ -10,11 +16,12 @@
 #include <iostream>
 #include "error.h"
 #include <vector>
+#include <memory>
 
 
 namespace chain{
     namespace file {
-
+        std::string file_name;
         std::string parse_extension (std::string str){
             char c = '0';
             int length = str.length() - 1;
@@ -36,11 +43,12 @@ namespace chain{
         }
 
 
-        std::vector<std::string>* invoke_file(std::string file_name){
+        std::vector<std::string>* invoke_file(std::string f_name){
+            file_name = f_name;
             make_nullvector;
-            std::fstream bytecode;
-            bytecode.open(file_name, std::ios::in);
-            if (!bytecode){
+            std::unique_ptr<std::fstream> bytecode = std::make_unique<std::fstream>();
+            bytecode->open(file_name, std::ios::in);
+            if (!(*bytecode)){
                 chain::throw_error::file_not_found();
                 return nullvector;
             }
@@ -51,11 +59,11 @@ namespace chain{
             }
             std::vector<std::string> * file_parsed = new std::vector<std::string>();
             while (true){
-                if (bytecode.eof()){
+                if (bytecode->eof()){
                     break;
                 }
                 std::string stream;
-                std::getline(bytecode, stream);
+                std::getline(*bytecode, stream);
                 if (stream.find_first_not_of(' ')==std::string::npos){
                     continue;
                 }
@@ -67,7 +75,7 @@ namespace chain{
     }
 
     namespace debug {
-            void printfile(std::fstream bytecode){
+            void print_file(std::fstream bytecode){
                 while(true){
                     std::string stream;
                     std::getline(bytecode, stream);

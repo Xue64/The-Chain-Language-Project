@@ -10,6 +10,7 @@
 
 #include "vercontrol.h"
 #include "opcodestream.h"
+#include "filecontrol.h"
 namespace chain{
 
     namespace terminal {
@@ -35,6 +36,11 @@ namespace chain{
 
         void end_process(){
             std::cout << "Press the enter key to end process...";
+            getchar();
+        }
+
+        void compilation_success(){
+            std::cout << "Compilation success. File stored in " + chain::file::file_name + "\n";
             getchar();
         }
     }

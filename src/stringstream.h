@@ -11,17 +11,21 @@
 namespace chain {
     namespace sstream {
         make_nullvector;
-        std::vector<std::string> * string_parser (std::string){
+        std::vector<std::string> * string_parser (std::string str){ // break up line to words
+            int iterator = 0;
+            std::string temp = "";
+            std::vector<std::string> * line = new std::vector<std::string>();
+
             return nullvector;
         }
 
         void file_encryptor (std::vector<std::string> * file){
 
-            for (int i=0; i<file->size(); i++){
+            /*for (int i=0; i<file->size(); i++){
                 std::cout << "Now encrypting\n";
                 (*file)[i] = trex::encrypt((*file)[i]);
                 std::cout << "At line " << i+1 << ": " << (*file)[i] << std::endl;
-            }
+            }*/
         }
 
 

@@ -16,7 +16,7 @@ _ccmain_ { //execution starts here
         chain::sstream::file_encryptor(file_line);
         _debug_;
         chain::sstream::file_printer(*file_line);
-
+        chain::terminal::compilation_success();
     } else {
         // chain::terminal::event_loop();
     }
