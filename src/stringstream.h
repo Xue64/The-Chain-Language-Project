@@ -19,6 +19,7 @@ struct string_construct {
     bool definite_comment = false;
     bool label = false;
     bool classified = false;
+    char operating;
 
     void reset (){
         comment = false;
@@ -34,22 +35,31 @@ namespace chain {
     namespace sstream {
 
         void check_operator (string_construct &holder, std::string &temp, bool &comment){
-            char operator_holder = temp[temp.length()-1];
+            char operator_holder = temp[temp.length()];
+
             if (temp==";"){
                 holder.definite_comment = true;
                 holder.classified = true;
                 comment = true;
-            } else if (operator_holder==';'){
+            }
+
+            else if (operator_holder==';'){
                 holder.comment = true;
                 holder.classified = true;
                 comment = true;
-            } else if (operator_holder==':'){
+            }
+
+            else if (operator_holder==':'){
                 holder.label = true;
                 holder.classified = true;
-            } else if (operator_holder==','){
+            }
+
+            else if (operator_holder==','){
                 holder.address = true;
                 holder.classified = true;
-            } else if (operator_holder== '&'){
+            }
+
+            else if (operator_holder== '&'){
                 holder.reference = true;
                 holder.classified = true;
             }
@@ -58,34 +68,45 @@ namespace chain {
 
         make_nullvector;
         std::vector<string_construct> * string_parser (std::string str){ // break up line to words
+
+
             int iterator = 0;
             std::string temp = "";
             char c;
             std::vector<string_construct> * line = new std::vector<string_construct>();
             string_construct holder;
             holder.reset();
+
             while (iterator<str.length()){
                 bool comment = false;
                 c = str[iterator];
+
                 if (c==' '){
                     check_operator(holder, temp, comment);
+
                     if (temp.length()!=0){
                         holder.string = temp;
                         line->push_back(holder);
+
                         if (comment){
                             return line; // if a comment is found, ignore the rest of the line
                         }
+
                         holder.reset();
                     }
+
                     temp = "";
                     iterator++;
                     continue;
                 }
+
                 temp += c;
                 iterator++;
+
+
             } if (!line->empty()){
-                bool invalid;
-                check_operator(holder, temp, invalid);
+                make_nullboolean;
+                check_operator(holder, temp, nullboolean);
                 holder.string = temp;
                 line->push_back(holder);
             }
@@ -95,11 +116,10 @@ namespace chain {
 
         void file_encryptor (std::vector<std::string> * file){
 
-            /*for (int i=0; i<file->size(); i++){
-                std::cout << "Now encrypting\n";
+            for (int i=0; i<file->size(); i++){
                 (*file)[i] = trex::encrypt((*file)[i]);
-                std::cout << "At line " << i+1 << ": " << (*file)[i] << std::endl;
-            }*/
+            }
+
         }
 
 

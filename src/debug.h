@@ -20,19 +20,33 @@ namespace chain {
         void print_parser (std::vector<string_construct> vector){
             for (int i=0; i<vector.size(); i++){
                 std::cout << vector[i].string << " ";
+
                 if (vector[i].reference){
                     std::cout << "references using the reference operator\n";
-                } if (vector[i].address){
+                }
+
+                if (vector[i].address){
                     std::cout <<"references to a direct address\n";
-                } if (vector[i].label){
+                }
+
+                if (vector[i].label){
                     std::cout << "is a label\n";
-                } if (vector[i].comment){
+                }
+
+                if (vector[i].comment){
                     std::cout << "is a comment";
-                } if (vector[i].definite_comment){
+                }
+
+                if (vector[i].definite_comment){
                     std::cout << "is a definite comment.\n";
-                } if (!vector[i].classified) {
+                }
+
+                if (!vector[i].classified) {
                     std::cout << "does not have an operator.\n";
                 }
+
+                char operator_holder = vector[i].string[vector[i].string.length()-1];
+                std::cout << "Found with operator " << operator_holder << std::endl;
             }
         }
 
