@@ -32,7 +32,7 @@ namespace chain {
         }
 
         void invalid_file_extension(){
-            std::cout << "Error IN3: Invalid file extension, the specified file is not compatible with the CVM.\n\tThe CVM can only execute .ccbyte files and can only read .cc files.\n";
+            std::cout << "Error IN3: Invalid file extension, the specified file is not compatible with the CVM.\n\tThe CVM can only execute .ccbyte files and can only read .link files.\n";
         }
 
     }

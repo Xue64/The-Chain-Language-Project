@@ -6,45 +6,36 @@
 #define CUBECLUB_RS_ASM_DEBUG_H
 #include <iostream>
 #include "memory.h"
+#include <vector>
 #define __debug__ std::cout << "debugger passed here\n"
 namespace chain {
     namespace debug {
-        void print_RAM (chain::Memory * memory){
-            for (int i=0; i<memory->MEMORY_CAPACITY; i++){
-                int zero = 10000;
-                std::cout << i;
-                for (int j=0; j<=4; j++){
-                    if (i<zero){
-                        std::cout << "0";
-                    }
-                    zero/=10;
-                }
-                std::cout << " ";
-                for (int j=0; j<8; j++){
-                    std::cout << memory->RAM[i][j];
-                }
-                std::cout << std::endl;
+        template <typename T>
+        void print_vector (std::vector<T> vector){
+            for (T i : vector){
+                std::cout << i << std::endl;
             }
         }
 
-        void print_RAM (Memory * memory, int range_A, int range_B){
-            std::cout << std::endl;
-            for (int i=range_A; i<range_B; i++){
-                int zero = 10000;
-                for (int j=0; j<4; j++){
-                    if (i<zero){
-                        std::cout << "0";
-                    }
-                    zero/=10;
+        void print_parser (std::vector<string_construct> vector){
+            for (int i=0; i<vector.size(); i++){
+                std::cout << vector[i].string << " ";
+                if (vector[i].reference){
+                    std::cout << "references using the reference operator\n";
+                } if (vector[i].address){
+                    std::cout <<"references to a direct address\n";
+                } if (vector[i].label){
+                    std::cout << "is a label\n";
+                } if (vector[i].comment){
+                    std::cout << "is a comment";
+                } if (vector[i].definite_comment){
+                    std::cout << "is a definite comment.\n";
+                } if (!vector[i].classified) {
+                    std::cout << "does not have an operator.\n";
                 }
-                std::cout << i;
-                std::cout << " ";
-                for (int j=0; j<8; j++){
-                    std::cout << memory->RAM[i][j];
-                }
-                std::cout << std::endl;
             }
         }
+
     }
 }
 

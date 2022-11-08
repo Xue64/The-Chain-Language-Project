@@ -12,7 +12,7 @@ namespace chain {
 
     class Memory {
     public:
-        const int MEMORY_CAPACITY = pow(2, 16); // total memory capacity in bytes
+        long const int MEMORY_CAPACITY = pow(2, 16); // total memory capacity in bytes
         const int BIT_CAPACITY = MEMORY_CAPACITY*8; // total memory capacity in bits
         const int BASIC_CAPACITY = 8; // 8-bit capacity
         const int ADVANCED_CAPACITY = 16;

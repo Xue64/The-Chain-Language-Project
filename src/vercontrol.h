@@ -51,6 +51,7 @@ namespace chain {
 
     bool connected;
 
+
     bool get_internet(){
         return connected;
     }
