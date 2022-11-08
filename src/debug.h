@@ -11,7 +11,7 @@
 namespace chain {
     namespace debug {
         template <typename T>
-        void print_vector (std::vector<T> vector){
+        void print_vector (std::vector<T>* vector){
             for (T i : vector){
                 std::cout << i << std::endl;
             }
@@ -20,19 +20,32 @@ namespace chain {
         void print_parser (std::vector<string_construct> vector){
             for (int i=0; i<vector.size(); i++){
                 std::cout << vector[i].string << " ";
-                if (vector[i].reference){
+
+                if (vector[i].operators[3]){
                     std::cout << "references using the reference operator\n";
-                } if (vector[i].address){
+                }
+
+                if (vector[i].operators[5]){
                     std::cout <<"references to a direct address\n";
-                } if (vector[i].label){
+                }
+
+                if (vector[i].operators[4]){
                     std::cout << "is a label\n";
-                } if (vector[i].comment){
+                }
+
+                if (vector[i].operators[2]){
                     std::cout << "is a comment";
-                } if (vector[i].definite_comment){
+                }
+
+                if (vector[i].operators[2]){
                     std::cout << "is a definite comment.\n";
-                } if (!vector[i].classified) {
+                }
+
+                if (!vector[i].operators[0]) {
                     std::cout << "does not have an operator.\n";
                 }
+
+                std::cout << "Found with operator " << vector[i]._operator << std::endl;
             }
         }
 

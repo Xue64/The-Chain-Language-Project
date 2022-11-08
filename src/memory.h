@@ -17,19 +17,19 @@ namespace chain {
         const int BASIC_CAPACITY = 8; // 8-bit capacity
         const int ADVANCED_CAPACITY = 16;
 
-        int ** RAM, * AC, * R, * PC, * AR, * ACx, * ACy, * Rx, * Ry;
+        bool ** RAM, * AC, * R, * PC, * AR, * ACx, * ACy, * Rx, * Ry;
         int Z;
         Memory(){
-            RAM = (int**)malloc(sizeof(int*)*MEMORY_CAPACITY);
+            RAM = (bool**)malloc(sizeof(bool*)*MEMORY_CAPACITY);
             for (int i=0; i<MEMORY_CAPACITY; i++){
-                RAM[i] = new int[8];
+                RAM[i] = new bool[8];
             }
 
             // REGISTERS
-            AC = new int[ADVANCED_CAPACITY];
-            R = new int[ADVANCED_CAPACITY];
-            PC = new int[ADVANCED_CAPACITY];
-            AR = new int[ADVANCED_CAPACITY];
+            AC = new bool[ADVANCED_CAPACITY];
+            R = new bool[ADVANCED_CAPACITY];
+            PC = new bool[ADVANCED_CAPACITY];
+            AR = new bool[ADVANCED_CAPACITY];
             ACx = AC;
             ACy = AC+BASIC_CAPACITY;
             Rx = R;

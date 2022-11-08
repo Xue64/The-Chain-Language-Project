@@ -11,5 +11,9 @@
 #define make_nullvector std::vector<std::string> * nullvctr__
 #define nullvector nullvctr__
 #define _maindeclare_ chain::Memory * memory = new chain::Memory(); std::vector<std::string> * file_line;
+#define make_nullboolean bool _nullboolean
+#define nullboolean _nullboolean
+#define operator_present holder.operators[0] = true
 #endif //CUBECLUB_RS_ASM_CHAINMACRO_H
+
 
