@@ -7,13 +7,14 @@
 #include <iostream>
 #include "memory.h"
 #include <vector>
+#include "stringstream.h"
 #define __debug__ std::cout << "debugger passed here\n"
 namespace chain {
     namespace debug {
         template <typename T>
         void print_vector (std::vector<T>* vector){
-            for (T i : vector){
-                std::cout << i << std::endl;
+            for (auto i : *vector){
+                std::cout << i.string << "ENDSTRING" << std::endl;
             }
         }
 
@@ -33,18 +34,21 @@ namespace chain {
                     std::cout << "is a label\n";
                 }
 
-                if (vector[i].operators[2]){
-                    std::cout << "is a comment";
+                if (vector[i].operators[1]){
+                    std::cout << "is an absolute comment\n";
                 }
 
                 if (vector[i].operators[2]){
-                    std::cout << "is a definite comment.\n";
+                    std::cout << "is an in-line comment.\n";
                 }
 
                 if (!vector[i].operators[0]) {
                     std::cout << "does not have an operator.\n";
                 }
-
+                if (vector[i]._operator == '\0'){
+                    std::cout << "DOES NOT HAVE AN OPERATOR\n";
+                    continue;
+                }
                 std::cout << "Found with operator " << vector[i]._operator << std::endl;
             }
         }

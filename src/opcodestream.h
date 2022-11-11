@@ -9,12 +9,27 @@
 
 namespace chain {
 
+
+    /* ONE OPERAND PARADIGM
+     * load (mov)
+     * tor (mov)
+     * toac (mov)
+     * save (mov)
+     * sum (add)
+     * dif (sub)
+     * setac (set)
+     * setr (set)
+     * char (log8)   log8.char& acx
+     * int (log16)
+     */
+
+
     std::string opcode[256] = {"null_opcode", "load", "save", "tor", "toac", "incr",
-                               "add", "sub", "mult", "exp", "set", "setr",
+                               "sum", "dif", "mult", "exp", "setac", "setr",
                                "not", "jump", "jpos", "jneg", "int",
-                               "char", "null_opcode","null_opcode","null_opcode",
-                               "null_opcode", "null_opcode", "null_opcode", "null_opcode",
-                               "null_opcode", "null_opcode", "null_opcode", "null_opcode",
+                               "char", "move","equa","comp",
+                               "inc", "dec", "add", "sub",
+                               "set", "null_opcode", "null_opcode", "null_opcode",
                                "null_opcode", "null_opcode","null_opcode","null_opcode",
                                "null_opcode", "null_opcode","null_opcode","null_opcode",
                                "null_opcode", "null_opcode", "null_opcode", "null_opcode",

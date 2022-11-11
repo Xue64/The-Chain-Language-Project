@@ -29,13 +29,14 @@ struct string_construct{
     char _operator;
 
     string_construct(){
-        for (auto i : operators){
-            i = false;
-        }
+        clear();
     }
 
     void clear(){
-        string_construct();
+        for (int i=0; i<6; i++){
+            operators[i] = false;
+        }
+        _operator = '\0';
     }
 };
 
@@ -45,39 +46,44 @@ namespace chain {
 
         bool isWhiteSpace(std::string);
 
-        void check_operator (string_construct &holder, std::string &temp, bool &comment){
+        void check_operator (string_construct &holder){
+            std::string temp = holder.string;
             char operator_holder = temp[temp.length()-1];
-
-            std::cout << "Current operator in check of word: " << temp << " is " << operator_holder << std::endl;
-
+            holder.clear();
             if (temp==";"){
                 holder.operators[1] = true;
                 holder._operator = ';';
                 operator_present;
+                return;
             }
 
             else if (operator_holder==';'){
                 holder.operators[2] = true;
                 holder._operator = ';';
                 operator_present;
+                return;
             }
 
             else if (operator_holder==':'){
                 holder.operators[4] = true;
                 holder._operator = ':';
                 operator_present;
+                return;
             }
+
 
             else if (operator_holder==','){
                 holder.operators[5] = true;
                 holder._operator = ',';
                 operator_present;
+                return;
             }
 
             else if (operator_holder== '&'){
                 holder.operators[3] = true;
                 holder._operator = '&';
                 operator_present;
+                return;
             }
         }
 
@@ -85,52 +91,40 @@ namespace chain {
 
 
         make_nullvector;
-        std::vector<string_construct> * string_parser (std::string str){ // break up line to words
-
-
-            int iterator = 0;
-            std::string temp = "";
-            char c;
-            std::vector<string_construct> * line = new std::vector<string_construct>();
-            string_construct holder;
-            holder.clear();
-
-            while (iterator<str.length()){
-                bool comment = false;
-                c = str[iterator];
-
-                if (c==' '){
-                    check_operator(holder, temp, comment);
-
-                    if (temp.length()!=0){
-                        holder.string = temp;
-                        line->push_back(holder);
-
-                        if (comment){
-                            return line; // if a comment is found, ignore the rest of the line
-                        }
-
-                        holder.clear();
-                    }
-
-                    temp = "";
-                    iterator++;
+        std::vector<string_construct> * string_parser(std::string str){
+            string_construct result_holder;
+            result_holder.clear();
+            result_holder.string = "";
+            std::vector<string_construct> * returning = new std::vector<string_construct>();
+            // holds the vector of parsed words
+            while (true){
+                int index = str.find(" ");
+                result_holder.string = str.substr(0, index);
+                str = str.substr(index+1, str.length());
+                if (isWhiteSpace(result_holder.string)){ // checks if string is just whitespace
+                    str = str.substr(index+1, str.length());
                     continue;
                 }
-
-                temp += c;
-                iterator++;
-
-
-            } if (!line->empty()&&!isWhiteSpace(holder.string)){
-                make_nullboolean;
-                check_operator(holder, temp, nullboolean);
-                holder.string = temp;
-                line->push_back(holder);
+                check_operator(result_holder);
+                if (result_holder.operators[1]){ // checks if string is a definite comment
+                    return returning;
+                }
+                if (result_holder.operators[0]){ // checks if string has an operator
+                    result_holder.string = result_holder.string.substr(0, result_holder.string.length()-1);
+                    result_holder.string[result_holder.string.length()] = '\0';
+                }
+                returning->push_back(result_holder);
+                if (result_holder.operators[2]){ // checks if string has a comment operator
+                    return returning;
+                }
+                if (index==-1){ // checks for trailing whitespace
+                    break;
+                }
             }
+            return returning;
 
-            return line;
         }
+
 
         void file_encryptor (std::vector<std::string> * file){
 

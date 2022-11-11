@@ -34,7 +34,7 @@ namespace chain {
             ACy = AC+BASIC_CAPACITY;
             Rx = R;
             Ry = R+BASIC_CAPACITY;
-            std::map<std::string, int> * label = new std::map<std::string, int>(); //hashmap for loop labels
+            auto * label = new std::map<std::string, int>(); //hashmap for loop labels
             clearMemory();
 
         }
