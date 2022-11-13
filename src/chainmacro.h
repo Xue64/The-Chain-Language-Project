@@ -18,10 +18,14 @@
 #define nullboolean _nullboolean
 #define _argument_ argv[1]
 #define _configure_arguments_ chain::toLowerCaseTerminalArguments(argv[1], argv[2])
-
 #define decode(str, i) if(str==chain::opcode[i])
 #define operator_present holder.operators[0] = true
 #define _direct_call_ argc==2
+
+namespace chain{
+    int line = 0;
+}
+
 
 #endif //CUBECLUB_RS_ASM_CHAINMACRO_H
 

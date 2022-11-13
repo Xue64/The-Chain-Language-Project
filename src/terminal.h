@@ -35,6 +35,7 @@ namespace chain{
 
 
         void end_process(){
+            std::cout << "-----------------------\n";
             std::cout << "Press the enter key to end process...";
             getchar();
         }

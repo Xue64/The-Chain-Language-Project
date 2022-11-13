@@ -10,14 +10,21 @@
 #include <iostream>
 namespace chain {
 
+
     class Memory {
     public:
+        std::map<std::string, bool*> * label;
+        bool ** RAM, * AC, * R, * PC, * AR, * ACx, * ACy, * Rx, * Ry;
+        std::string * register_list;
+
+
+
         long const int MEMORY_CAPACITY = pow(2, 16); // total memory capacity in bytes
         const int BIT_CAPACITY = MEMORY_CAPACITY*8; // total memory capacity in bits
         const int BASIC_CAPACITY = 8; // 8-bit capacity
         const int ADVANCED_CAPACITY = 16;
 
-        bool ** RAM, * AC, * R, * PC, * AR, * ACx, * ACy, * Rx, * Ry;
+
         int Z;
         Memory(){
             RAM = (bool**)malloc(sizeof(bool*)*MEMORY_CAPACITY);
@@ -34,8 +41,10 @@ namespace chain {
             ACy = AC+BASIC_CAPACITY;
             Rx = R;
             Ry = R+BASIC_CAPACITY;
-            auto * label = new std::map<std::string, int>(); //hashmap for loop labels
+            label = new std::map<std::string, bool*>(); //hashmap for loop labels
             clearMemory();
+            register_list = new std::string[8];
+            initiateRegisterLabels();
 
         }
 
@@ -126,6 +135,31 @@ namespace chain {
             std::cout << "Z = [" << Z << "]\n";
         }
 
+        void initiateRegisterLabels(){
+            register_list[0] = "AC";
+            register_list[1] = "ACx";
+            register_list[2] = "ACy";
+            register_list[3] = "R";
+            register_list[4] = "Rx";
+            register_list[5] = "Ry";
+            register_list[6] = "PC";
+            register_list[7] = "AR";
+
+
+            label->insert({register_list[0], AC});
+            label->insert({register_list[1], ACx});
+            label->insert({register_list[2], ACy});
+            label->insert({register_list[3], R});
+            label->insert({register_list[4], Rx});
+            label->insert({register_list[5], Ry});
+            label->insert({register_list[6], PC});
+            label->insert({register_list[7], AR});
+
+        }
+
+
+
+
     };
 
     namespace debug {
@@ -165,6 +199,8 @@ namespace chain {
                 std::cout << std::endl;
             }
         }
+
+
 
 
     }
