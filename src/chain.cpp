@@ -7,18 +7,44 @@
 #include "stringstream.h"
 #include "debug.h"
 #include "compiler.h"
-_ccmain_ { //execution starts here
+_ccmain_ {
     _maindeclare_;
-    chain::terminal::setup();
-    chain::version_control();
+    string_construct str;
+
     if (_arguments_present){
-        std::string read_file(argv[1]);
-        file_line = chain::file::invoke_file(read_file); // returns the file in a string vector
-        for (int i=0; i<file_line->size(); i++){
-            std::vector<string_construct> * parsed = chain::sstream::string_parser((*file_line)[i]); // returns a vector of string_construct with operator information
+        if (_direct_call_){ // checks if command was not run via the terminal
+            _set_file_direct_call_;
+            file_line = chain::file::invoke_file(read_file); // returns the file in a string vector
+            for (int i=0; i<file_line->size(); i++){
+                std::vector<string_construct> * parsed = chain::sstream::string_parser((*file_line)[i]); // returns a vector of string_construct with operator information
+                chain::debug::print_parser(*parsed);
+            }
+
+
+
+            chain::terminal::compilation_success();
         }
 
-        chain::terminal::compilation_success();
+        if (!_direct_call_){
+            _configure_arguments_;
+        }
+        if (!strcmp(_argument_, "-chainc")){
+            chain::terminal::setup();
+            chain::version_control();
+            std::cout << "We invoke the Chain Compiler\n";
+            _set_file_;
+            file_line = chain::file::invoke_file(read_file); // returns the file in a string vector
+            for (int i=0; i<file_line->size(); i++){
+                std::vector<string_construct> * parsed = chain::sstream::string_parser((*file_line)[i]); // returns a vector of string_construct with operator information
+            }
+
+            chain::terminal::compilation_success();
+        }
+
+        if (_argument_ == "-cvm"){
+
+        }
+
     } else {
         // chain::terminal::event_loop();
     }

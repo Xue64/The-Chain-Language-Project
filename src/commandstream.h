@@ -8,16 +8,18 @@
 #include "stringstream.h"
 #include "chainmacro.h"
 
+namespace chain{
+    class commandStream{
+        chain::Memory * memory;
 
-class commandStream{
-    chain::Memory * memory;
-
-public:
-    commandStream(chain::Memory * memory){
-        this->memory = memory;
-    }
+    public:
+        commandStream(chain::Memory * memory){
+            this->memory = memory;
+        }
 
 
-};
+    };
+}
+
 
 #endif //CUBECLUB_RS_ASM_COMMANDSTREAM_H
