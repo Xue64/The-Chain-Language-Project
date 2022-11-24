@@ -28,6 +28,7 @@ _ccmain_ {
         }
 
 
+
         if (!(_direct_call_)){
             _configure_arguments_;
             std::cout << "COMMAND IS " << argv[1];

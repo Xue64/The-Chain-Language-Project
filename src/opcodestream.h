@@ -10,6 +10,7 @@
 namespace chain {
 
 
+
     /* ONE OPERAND PARADIGM
      * load (mov)
      * tor (mov)
