@@ -8,6 +8,7 @@
 #include <cmath>
 #include <cstdlib>
 #include <iostream>
+#include <algorithm>
 namespace chain {
 
 
@@ -15,17 +16,16 @@ namespace chain {
     public:
         std::map<std::string, bool*> * label;
         bool ** RAM, * AC, * R, * PC, * AR, * ACx, * ACy, * Rx, * Ry;
-        std::string * register_list;
+        std::vector<std::string> * register_list;
 
 
+        long constexpr static int BIT_CPU = 65536; // pow(2, 16)
+        long constexpr static int MEMORY_CAPACITY = BIT_CPU; // total memory capacity in bytes
+        constexpr static int BIT_CAPACITY = MEMORY_CAPACITY*8; // total memory capacity in bits
+        constexpr static int BASIC_CAPACITY = 8; // 8-bit capacity
+        constexpr static int ADVANCED_CAPACITY = 16;
+        int Z{};
 
-        long const int MEMORY_CAPACITY = pow(2, 16); // total memory capacity in bytes
-        const int BIT_CAPACITY = MEMORY_CAPACITY*8; // total memory capacity in bits
-        const int BASIC_CAPACITY = 8; // 8-bit capacity
-        const int ADVANCED_CAPACITY = 16;
-
-
-        int Z;
         Memory(){
             RAM = (bool**)malloc(sizeof(bool*)*MEMORY_CAPACITY);
             for (int i=0; i<MEMORY_CAPACITY; i++){
@@ -43,7 +43,8 @@ namespace chain {
             Ry = R+BASIC_CAPACITY;
             label = new std::map<std::string, bool*>(); //hashmap for loop labels
             clearMemory();
-            register_list = new std::string[8];
+            register_list = new std::vector<std::string>;
+
             initiateRegisterLabels();
 
         }
@@ -63,11 +64,9 @@ namespace chain {
             }
             Z = 0;
 
-            return;
-
         }
 
-        void view_registers() {
+        void view_registers() const {
             std::cout << "AC = [";
             for (int i=0; i<ADVANCED_CAPACITY; i++){
                 std::cout << AC[i];
@@ -136,31 +135,37 @@ namespace chain {
         }
 
         void initiateRegisterLabels(){
-            register_list[0] = "AC";
-            register_list[1] = "ACx";
-            register_list[2] = "ACy";
-            register_list[3] = "R";
-            register_list[4] = "Rx";
-            register_list[5] = "Ry";
-            register_list[6] = "PC";
-            register_list[7] = "AR";
+            register_list->emplace_back("AC");
+            register_list->emplace_back("ACx");
+            register_list->emplace_back("ACy");
+            register_list->emplace_back("R");
+            register_list->emplace_back("Rx");
+            register_list->emplace_back("Ry");
+            register_list->emplace_back("PC");
+            register_list->emplace_back("AR");
 
-
-            label->insert({register_list[0], AC});
-            label->insert({register_list[1], ACx});
-            label->insert({register_list[2], ACy});
-            label->insert({register_list[3], R});
-            label->insert({register_list[4], Rx});
-            label->insert({register_list[5], Ry});
-            label->insert({register_list[6], PC});
-            label->insert({register_list[7], AR});
+            label->insert({register_list->at(0), AC});
+            label->insert({register_list->at(1), ACx});
+            label->insert({register_list->at(2), ACy});
+            label->insert({register_list->at(3), R});
+            label->insert({register_list->at(4), Rx});
+            label->insert({register_list->at(5), Ry});
+            label->insert({register_list->at(6), PC});
+            label->insert({register_list->at(7), AR});
 
         }
 
 
+        bool isRegister(const std::string str){
 
+            if (std::find(register_list->begin(), register_list->end(), str)!=register_list->end()){
+                return true;
+            } return false;
+        }
 
     };
+
+
 
     namespace debug {
         void print_RAM (chain::Memory * memory){

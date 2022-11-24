@@ -124,7 +124,7 @@ namespace chain {
             string_construct result_holder;
             result_holder.clear();
             result_holder.string = "";
-            std::vector<string_construct> * returning = new std::vector<string_construct>();
+            auto * returning = new std::vector<string_construct>();
             // holds the vector of parsed words
             bool first = true; // for checking operator, so it does not apply to the first line of the string
             while (true){
