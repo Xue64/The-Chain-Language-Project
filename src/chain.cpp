@@ -11,8 +11,17 @@
 #include "syntax-tree.h"
 
 _ccmain_ {
-    _maindeclare_;
-    chain::string_construct str;
+    _maindeclare_
+    /* debug thread */ {
+        std::string test = "12d";
+        auto vect = chain::extract_complex(test);
+        for (auto var : *vect){
+            std::cout << var << std::endl;
+        }
+    }
+
+
+
 
     if (_arguments_present){
         if (_direct_call_){ // checks if command was not run via the terminal
@@ -20,7 +29,7 @@ _ccmain_ {
             file_line = chain::file::invoke_file(read_file); // returns the file in a string vector
             for (int i=0; i<file_line->size(); i++){
                 chain::line++;
-                std::vector<chain::string_construct> * parsed = chain::sstream::string_parser((*file_line)[i]); // returns a vector of string_construct with operator information
+                std::vector<chain::string_construct> * parsed = chain::sstream::string_parser((file_line->at(i))); // returns a vector of string_construct with operator information
                 chain::debug::print_parser(*parsed);
             }
             chain::terminal::end_process();

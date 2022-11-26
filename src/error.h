@@ -11,6 +11,8 @@ namespace chain {
 
     namespace throw_error {
 
+        // virtual machine or compiler errros
+
         void no_internet (){
             std::cout << "[Error N01]: Internet privileges unspecified, please check your internet connection to start the updater module.\n";
         }
@@ -24,8 +26,10 @@ namespace chain {
             std::cout << "\tCurrent available version for download: " << str << std::endl;
         }
 
+        //file errors
+
         void invalid_input (){
-            std::cout << "[Error IN1]: Invalid input, please follow input standards.\n";
+            std::cout << "[Error IN1 - 401]: Invalid input, please follow input standards.\n";
         }
 
         void file_not_found (){
@@ -51,9 +55,16 @@ namespace chain {
         }
 
         void invalid_hex_format(std::string str){
-            std::cout << "[Error SN1 - 501]: In line " << chain::line << " numerical declaration error, where numeric declaration " << str << " does not follow format 0x<num>h" << std::endl;
+            std::cout << "[Error SN2 - 501]: In line " << chain::line << " numerical declaration error, where numeric declaration " << str << " does not follow format 0x<num>h" << std::endl;
+            exit(501);
         }
 
+        // logic errors
+
+        void not_numeric(std::string str){
+            std::cout << "[Error L01- 901]: In line " << chain::line << " numeric tokenizer error, " << str <<  " is not a numeric variable. Please contact the customer support for help. This is a virtual machine / compiler error.\n";
+            exit(901);
+        }
 
 
 
