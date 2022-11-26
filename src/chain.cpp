@@ -8,7 +8,7 @@
 #include "debug.h"
 #include "compiler.h"
 #include "stringconstruct.h"
-
+#include "syntax-tree.h"
 
 _ccmain_ {
     _maindeclare_;

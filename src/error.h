@@ -43,8 +43,15 @@ namespace chain {
         // syntax errors:
 
         void syntax_invalid_operand(chain::string_construct error){
+            /*
+             * deprecated error
+             */
             std::cout << "[Error SN1 - 500]: In line " << chain::line << " invalid operand: " << error.secondary_operator << " around line: " << error.string << std::endl;
             exit(500);
+        }
+
+        void invalid_hex_format(std::string str){
+            std::cout << "[Error SN1 - 501]: In line " << chain::line << " numerical declaration error, where numeric declaration " << str << " does not follow format 0x<num>h" << std::endl;
         }
 
 
