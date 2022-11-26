@@ -25,9 +25,11 @@ namespace chain {
      */
 
 
-    std::string opcode[256] = {"null_opcode", "load", "save", "tor", "toac", "incr",
-                               "sum", "dif", "mult", "exp", "setac", "setr",
-                               "not", "jump", "jpos", "jneg", "int",
+
+
+    std::string opcode[256] = {"nop", "load", "save", "tor", "toac", "incr",
+                               "sum", "dif", "mult", "exp", "clreg", "clrmem",
+                               "notz", "jump", "jpos", "jneg", "int",
                                "char", "move","equa","comp",
                                "inc", "dec", "add", "sub",
                                "set", "null_opcode", "null_opcode", "null_opcode",

@@ -27,6 +27,19 @@ namespace chain{
         return bin_array;
     }
 
+
+    char find_previous (std::string str){
+        return str.at(str.length()-2);
+    }
+
+
+    std::string extract_from_first(std::string str){
+        return str.substr(1, str.length()-1);
+    }
+
+    std::string extract_from_last(std::string str){
+        return str.substr(0, str.length()-1);
+    }
 }
 
 #endif //CUBECLUB_RS_ASM_CHAIN_ALGORITHMS_H
