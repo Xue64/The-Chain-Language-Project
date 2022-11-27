@@ -1,5 +1,6 @@
 # CubeClub's Chain Programming Language
 © CubeClub (Rufelle Emmanuel Pactol), 2022
+
 non-functional, current release: 0.2.1
 
 ## DevLog as of 27/11/2022
