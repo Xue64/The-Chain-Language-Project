@@ -8,6 +8,8 @@
 
 namespace chain{
 
+
+
     int strHex (std::string str){
         std::string binary;
         return (int)str.at(1);
@@ -97,7 +99,7 @@ namespace chain{
         else {
             complex.exists = false;
             complex.string_1 = str;
-            complex.string_2 = nullptr;
+            complex.string_2 = "";
         }
 
         return complex;

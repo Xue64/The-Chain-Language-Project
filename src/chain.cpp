@@ -12,15 +12,14 @@
 
 _ccmain_ {
     _maindeclare_
-    /* debug thread */ {
-        std::string test = "12d";
-        auto vect = chain::extract_complex(test);
-        for (auto var : *vect){
+    /* debug thread */
+
+        std::string test = "-0x5Hd\\0\\0";
+        auto vector = chain::syntax_tree::extract_complex(test);
+        for (auto var : *vector){
             std::cout << var << std::endl;
         }
     }
-
-
 
 
     if (_arguments_present){
@@ -35,6 +34,9 @@ _ccmain_ {
             chain::terminal::end_process();
             return 0;
         }
+
+
+
 
 
 
