@@ -17,8 +17,8 @@
 // Created by Rufelle on 26/11/2022.
 //
 
-#ifndef CUBECLUB_RS_ASM_SYNTAX_TREE_H
-#define CUBECLUB_RS_ASM_SYNTAX_TREE_H
+#ifndef CUBECLUB_RS_ASM_LEXER_MODULE_H
+#define CUBECLUB_RS_ASM_LEXER_MODULE_H
 
 
 
@@ -40,6 +40,8 @@ namespace chain{
         enum Operators{ // finds out what operators are there
             TRASH_OP, COMMA, LABEL_CREATE, LABEL_REFERENCE, NUMERIC_10, NUMERIC_2, NUMERIC_16, QUOTE, PERIOD, SEMICOLON, NO_OPERAND, NEGATIVE
         };
+
+
 
         enum EscapeSequence{
             TRASH_ESC, NEWLINE, ENDLINE, NOESCAPE
@@ -301,4 +303,4 @@ namespace chain{
 }
 
 
-#endif //CUBECLUB_RS_ASM_SYNTAX_TREE_H
+#endif //CUBECLUB_RS_ASM_LEXER_MODULE_H

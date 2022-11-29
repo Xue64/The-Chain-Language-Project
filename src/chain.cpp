@@ -4,24 +4,18 @@
 #include "filecontrol.h"
 #include "chainmacro.h"
 #include "trex.h"
-#include "stringstream.h"
+#include "deprecated_stringstream.h"
 #include "debug.h"
 #include "compiler.h"
-#include "stringconstruct.h"
-#include "syntax-tree.h"
+#include "deprecated_stringconstruct.h"
+#include "lexer_module.h"
 
 _ccmain_ {
     _maindeclare_
     /* debug thread */
-
-        std::string test = "-0x5Hd\\0\\0";
-        auto vector = chain::syntax_tree::extract_complex(test);
-        for (auto var : *vector){
-            std::cout << var << std::endl;
-        }
-    }
-
-
+    chain::terminal::setup();
+    std::string hex_v = "0X12h";
+    chain::syntax_tree::numeric_tokenizer(hex_v);
     if (_arguments_present){
         if (_direct_call_){ // checks if command was not run via the terminal
             _set_file_direct_call_;

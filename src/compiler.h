@@ -6,7 +6,7 @@
 #define CUBECLUB_RS_ASM_COMPILER_H
 #include "opcodestream.h"
 #include "memory.h"
-#include "stringstream.h"
+#include "deprecated_stringstream.h"
 #include "commandstream.h"
 
 

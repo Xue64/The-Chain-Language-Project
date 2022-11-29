@@ -5,7 +5,7 @@
 #ifndef CUBECLUB_RS_ASM_COMMANDSTREAM_H
 #define CUBECLUB_RS_ASM_COMMANDSTREAM_H
 #include "memory.h"
-#include "stringstream.h"
+#include "deprecated_stringstream.h"
 #include "chainmacro.h"
 
 namespace chain{

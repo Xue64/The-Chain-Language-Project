@@ -2,15 +2,15 @@
 // Created by Rufelle on 05/11/2022.
 //
 
-#ifndef CUBECLUB_RS_ASM_STRINGSTREAM_H
-#define CUBECLUB_RS_ASM_STRINGSTREAM_H
+#ifndef CUBECLUB_RS_ASM_DEPRECATED_STRINGSTREAM_H
+#define CUBECLUB_RS_ASM_DEPRECATED_STRINGSTREAM_H
 #include <iostream>
 #include <vector>
 #include "trex.h"
 #include "chainmacro.h"
 #include <string>
 #include <ctype.h>
-#include "stringconstruct.h"
+#include "deprecated_stringconstruct.h"
 
 
 
@@ -190,4 +190,4 @@ namespace chain {
 }
 
 
-#endif //CUBECLUB_RS_ASM_STRINGSTREAM_H
+#endif //CUBECLUB_RS_ASM_DEPRECATED_STRINGSTREAM_H

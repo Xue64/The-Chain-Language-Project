@@ -7,7 +7,7 @@
 #include <iostream>
 #include "memory.h"
 #include <vector>
-#include "stringstream.h"
+#include "deprecated_stringstream.h"
 
 #define __debug__ std::cout << "debugger passed here\n"
 namespace chain {
