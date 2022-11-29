@@ -1,21 +1,19 @@
-#include "vercontrol.h"
-#include "terminal.h"
-#include "memory.h"
-#include "filecontrol.h"
+#include "../ChainDevKit/Virtual Machine/vercontrol.h"
+#include "loggers/terminal.h"
+#include "../Chain Runtime Environment (ChainVM)/memory.h"
+#include "../ChainDevKit/Virtual Machine/filecontrol.h"
 #include "chainmacro.h"
-#include "trex.h"
-#include "deprecated_stringstream.h"
-#include "debug.h"
-#include "compiler.h"
-#include "deprecated_stringconstruct.h"
-#include "lexer_module.h"
+#include "../TRex Encryption/trex.h"
+#include "../deprecated/deprecated_stringstream.h"
+#include "loggers/debug.h"
+#include "../Compiler/compiler.h"
+#include "../deprecated/deprecated_stringconstruct.h"
+#include "../AST/lexer_module.h"
+
+
 
 _ccmain_ {
     _maindeclare_
-    /* debug thread */
-    chain::terminal::setup();
-    std::string hex_v = "0X12h";
-    chain::syntax_tree::numeric_tokenizer(hex_v);
     if (_arguments_present){
         if (_direct_call_){ // checks if command was not run via the terminal
             _set_file_direct_call_;
@@ -25,14 +23,9 @@ _ccmain_ {
                 std::vector<chain::string_construct> * parsed = chain::sstream::string_parser((file_line->at(i))); // returns a vector of string_construct with operator information
                 chain::debug::print_parser(*parsed);
             }
-            chain::terminal::end_process();
+            chain::terminal::compilation_success();
             return 0;
         }
-
-
-
-
-
 
         if (!(_direct_call_)){
             _configure_arguments_;
@@ -48,6 +41,7 @@ _ccmain_ {
                 std::vector<chain::string_construct> * parsed = chain::sstream::string_parser((*file_line)[i]); // returns a vector of string_construct with operator information
             }
             chain::terminal::compilation_success();
+
         }
 
         if (_argument_ == "-chainvm"){
@@ -56,6 +50,7 @@ _ccmain_ {
 
     } else {
         // chain::terminal::event_loop();
+        chain::terminal::compilation_success();
     }
 
     return 0;

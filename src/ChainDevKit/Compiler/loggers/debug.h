@@ -5,9 +5,9 @@
 #ifndef CUBECLUB_RS_ASM_DEBUG_H
 #define CUBECLUB_RS_ASM_DEBUG_H
 #include <iostream>
-#include "memory.h"
+#include "../../Virtual Machine/memory.h"
 #include <vector>
-#include "deprecated_stringstream.h"
+#include "../../../deprecated/deprecated_stringstream.h"
 
 #define __debug__ std::cout << "debugger passed here\n"
 namespace chain {

@@ -4,9 +4,9 @@
 
 #ifndef CUBECLUB_RS_ASM_COMMANDSTREAM_H
 #define CUBECLUB_RS_ASM_COMMANDSTREAM_H
-#include "memory.h"
-#include "deprecated_stringstream.h"
-#include "chainmacro.h"
+#include "Chain Runtime Environment (ChainVM)/memory.h"
+#include "../../../deprecated/deprecated_stringstream.h"
+#include "../../../Main Module/chainmacro.h"
 
 namespace chain{
     class commandStream{

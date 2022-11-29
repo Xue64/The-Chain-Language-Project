@@ -6,8 +6,8 @@
 #define CUBECLUB_RS_ASM_DEPRECATED_STRINGSTREAM_H
 #include <iostream>
 #include <vector>
-#include "trex.h"
-#include "chainmacro.h"
+#include "../TRex Encryption/trex.h"
+#include "../Main Module/chainmacro.h"
 #include <string>
 #include <ctype.h>
 #include "deprecated_stringconstruct.h"

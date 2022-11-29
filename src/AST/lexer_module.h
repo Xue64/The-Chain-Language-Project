@@ -50,7 +50,7 @@ namespace chain{
 
 
         enum Identifier{ // identifies the type of word
-            TRASH_ID, OPERATOR, STRING, NUMERIC, COMMAND, DIRECTIVE, COMMENT, ESCAPE_SEQUENCE
+            TRASH_ID, OPERATOR, STRING, NUMERIC, COMMAND, DIRECTIVE, COMMENT, ESCAPE_SEQUENCE, REGISTER
         };
 
 
@@ -95,11 +95,11 @@ namespace chain{
             while (true){
                 if (str.length()<=4){
                     Complex_String deprecated_vector = complex_word(str);
-                    vector->insert(it+index_start, deprecated_vector.string_1);
-                    index_start++;
                     if (deprecated_vector.exists){
                         vector->insert(it+index_start, deprecated_vector.string_2);
                     }
+                    vector->insert(it+index_start, deprecated_vector.string_1);
+                    index_start++;
                     return vector;
                 }
                 char start = str.at(0);
@@ -146,7 +146,7 @@ namespace chain{
                         continue;
                     }
 
-                    vector->insert(it+static_cast<int>(vector->size())-index_end-1, str.substr(str.length()-2, 2));
+                    vector->insert(it+static_cast<int>(vector->size())-index_end, str.substr(str.length()-2, 2));
                     index_end++;
                     str = str.substr(0, str.length()-2);
                     continue;
@@ -160,6 +160,16 @@ namespace chain{
         }
 
 
+
+        Identifier register_tokenizer (std::string str, Memory * memory){
+            Operators op;
+            for (auto i : *memory->register_list){
+                if (str==i){
+                    return REGISTER;
+                }
+            }
+            return TRASH_ID;
+        }
 
         Operators operator_tokenizer (std::string str){
             if (str==";"){
@@ -280,7 +290,6 @@ namespace chain{
                 /*
                  * Checks if the word is complex
                  */
-
                 if (ds.exists){
                     parsed_line->push_back(tokenizer(ds.string_1));
                     parsed_line->push_back(tokenizer(ds.string_2));

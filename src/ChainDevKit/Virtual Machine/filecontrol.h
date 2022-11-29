@@ -14,7 +14,7 @@
 #include <string>
 #include <cstring>
 #include <iostream>
-#include "error.h"
+#include "loggers/error.h"
 #include <vector>
 #include <memory>
 
@@ -53,7 +53,7 @@ namespace chain{
                 return nullvector;
             }
             std::string file_extension = parse_extension(file_name);
-            if (file_extension!=".link" && file_extension!=".ccbyte"){
+            if (file_extension!=".link" && file_extension!=".cbit"){
                 chain::throw_error::invalid_file_extension();
                 return nullvector;
             }

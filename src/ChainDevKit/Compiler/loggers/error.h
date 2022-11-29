@@ -5,8 +5,8 @@
 #ifndef CUBECLUB_RS_ASM_ERROR_H
 #define CUBECLUB_RS_ASM_ERROR_H
 #include <iostream>
-#include "chainmacro.h"
-#include "deprecated_stringconstruct.h"
+#include "../../../Main Module/chainmacro.h"
+#include "../../../deprecated/deprecated_stringconstruct.h"
 namespace chain {
 
     namespace throw_error {

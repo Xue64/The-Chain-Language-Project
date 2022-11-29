@@ -3,4 +3,4 @@ project(CubeClub_RS_ASM)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(CubeClub_RS_ASM chain.cpp)
+add_executable(CubeClub_RS_ASM "Main Module/chain.cpp")

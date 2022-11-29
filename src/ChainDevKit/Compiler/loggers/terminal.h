@@ -4,13 +4,13 @@
 #include <iostream>
 #include <ctime>
 #include <unistd.h>
-#include "vercontrol.h"
+#include "../../Virtual Machine/vercontrol.h"
 #ifndef CUBECLUB_RS_ASM_TERMINAL_H
 #define CUBECLUB_RS_ASM_TERMINAL_H
-
-#include "vercontrol.h"
-#include "opcodestream.h"
-#include "filecontrol.h"
+#include <chrono>
+#include "../../Virtual Machine/vercontrol.h"
+#include "../opcodestream.h"
+#include "../../Virtual Machine/filecontrol.h"
 namespace chain{
 
     namespace terminal {
@@ -41,9 +41,16 @@ namespace chain{
         }
 
         void compilation_success(){
-            std::cout << "Compilation success. File stored in " + chain::file::file_name + "\n";
+            auto termination_time = (chain::time_limiter::time_end() - chain::time_limiter::start);
+            auto total_time = std::chrono::duration_cast<std::chrono::microseconds>(termination_time);
+            std::cout << "------------------------------\n[Done] Executed in 0." << total_time.count() << " ms";
+            std::cout << "\n[Compilation Success] File stored at " + chain::file::file_name;
+            std::cout << "\nEnter any key to terminate process...";
             getchar();
         }
+
+
+
     }
     
     

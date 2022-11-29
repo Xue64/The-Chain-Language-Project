@@ -11,10 +11,10 @@
 #include <fstream>
 #include <cstring>
 #include <windows.h>
-#include "error.h"
-#include "chainmacro.h"
+#include "loggers/error.h"
+#include "../../Main Module/chainmacro.h"
 #include <string>
-#include <ShellAPI.h>
+#include <shellapi.h>
 
 
 namespace shell{

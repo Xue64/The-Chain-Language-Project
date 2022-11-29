@@ -5,9 +5,9 @@
 #ifndef CUBECLUB_RS_ASM_COMPILER_H
 #define CUBECLUB_RS_ASM_COMPILER_H
 #include "opcodestream.h"
-#include "memory.h"
-#include "deprecated_stringstream.h"
-#include "commandstream.h"
+#include "../Virtual Machine/memory.h"
+#include "../../deprecated/deprecated_stringstream.h"
+#include "loggers/commandstream.h"
 
 
 namespace chain{

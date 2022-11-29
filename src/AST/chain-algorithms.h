@@ -51,6 +51,11 @@ namespace chain{
 
     Complex_String complex_word(std::string str){
         Complex_String complex;
+        if (str.length()==1){
+            complex.string_1 = str;
+            complex.exists = false;
+            return complex;
+        }
 
         complex.exists = true;
         if (str.at(0)=='$'){
