@@ -5,10 +5,19 @@
 
 
 © CubeClub (Rufelle Emmanuel Pactol), 2022
-non-functional, current release: 0.2.1
 
-## DevLog as of 27/11/2022
-We have now made significant progress as we decouple the old chain::string_construct token handler and deprecated the chain::stringstream header. We have now introduced the new chain::syntax-tree which uses the chain::lexer and the all-new chain::Token for managing tokens, allowing for better modularity going forward. We also shifted the software engineering focus to avoid possible memory leaks. From hereon out, unless absolutely necessary, all pointers will be handled by std::unique_ptr and std::shared_ptr. All NULL handling will also be handled by std::string::npos for strings and special ENUM values for tokens. We also shifted from C-style arrays to std::array<>. 
+## To-Do For Alpha Release 0.0.3
+-> more robust lexer
+-> parser and AST
+
+## For other alpha releases:
+0.0.4 -> one operand commands
+0.0.5 -> advanced commands
+0.0.6 -> labels
+0.0.7 -> assign and console commands
+0.0.8 -> release and downloader
+0.1.0 -> BETA RELEASE
+0.1.x -> ChainLang for EDU
 
 ## Readme
 
