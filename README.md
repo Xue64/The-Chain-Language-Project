@@ -6,8 +6,13 @@
 
 © CubeClub (Rufelle Emmanuel Pactol), 2022
 
+The official documentation is available (incomplete) at: https://bit.ly/chaindocx
+
+
 ## To-Do For Alpha Release 0.0.3
+
 -> more robust lexer
+
 -> parser and AST
 
 ## For other alpha releases:
