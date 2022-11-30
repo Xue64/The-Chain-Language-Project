@@ -12,11 +12,17 @@
 
 ## For other alpha releases:
 0.0.4 -> one operand commands
+
 0.0.5 -> advanced commands
+
 0.0.6 -> labels
+
 0.0.7 -> assign and console commands
+
 0.0.8 -> release and downloader
+
 0.1.0 -> BETA RELEASE
+
 0.1.x -> ChainLang for EDU
 
 ## Readme
