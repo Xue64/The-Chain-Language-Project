@@ -33,12 +33,12 @@ namespace chain {
         }
 
         void file_not_found (){
-            std::cout << "[FileNotFoundException - 402]: File not found, the specified file input cannot be found in the directory.\n\tCheck the filename specified and make sure that the file ends in either .cc or .ccbyte.\n";
+            std::cout << "[FileNotFoundException - 402]: File not found, the specified file input cannot be found in the directory.\n\tCheck the filename specified and make sure that the file ends in either .link or .cbit.\n";
             exit(402);
         }
 
         void invalid_file_extension(){
-            std::cout << "[InvalidFileExtensionException - 403]: Invalid file extension, the specified file is not compatible with the CVM.\n\tThe CVM can only execute .ccbyte files and can only read .link files.\n";
+            std::cout << "[InvalidFileExtensionException - 403]: Invalid file extension, the specified file is not compatible with the CVM.\n\tThe CVM can only execute .cbit files and can only read .link files.\n";
             exit(405);
         }
 

@@ -4,7 +4,9 @@
 
 #ifndef CUBECLUB_RS_ASM_CHAINMACRO_H
 #define CUBECLUB_RS_ASM_CHAINMACRO_H
-#include "loggers/eventhandler.h"
+#include "../ChainDevKit/Compiler/loggers/eventhandler.h"
+#define make_nullvector_ptr auto nullvector__ = std::make_unique<std::vector<std::string>>();
+#define nullvector_ptr nullvector__ nullvector_ptr
 #define _ccmain_ int main(int argc, char ** argv)
 #define _arguments_present argc>1
 #define _set_file_ std::string read_file(argv[2]);
@@ -13,7 +15,7 @@
 #define _debug_ std::cout << "pass" << std::endl
 #define make_nullvector std::vector<std::string> * nullvctr__
 #define nullvector nullvctr__
-#define _maindeclare_ chain::Memory * memory = new chain::Memory(); std::vector<std::string> * file_line; chain::Compiler * compiler = new chain::Compiler(memory);
+#define _maindeclare_ chain::Memory * memory = new chain::Memory(); std::unique_ptr<std::vector<std::string>> file_line; chain::Compiler * compiler = new chain::Compiler(memory);
 #define make_nullboolean bool _nullboolean
 #define nullboolean _nullboolean
 #define _argument_ argv[1]

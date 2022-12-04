@@ -11,7 +11,7 @@
 #include <fstream>
 #include <cstring>
 #include <windows.h>
-#include "loggers/error.h"
+#include "../Compiler/loggers/error.h"
 #include "../../Main Module/chainmacro.h"
 #include <string>
 #include <shellapi.h>

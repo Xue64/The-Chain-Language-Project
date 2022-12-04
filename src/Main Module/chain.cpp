@@ -1,27 +1,32 @@
 #include "../ChainDevKit/Virtual Machine/vercontrol.h"
-#include "loggers/terminal.h"
-#include "../Chain Runtime Environment (ChainVM)/memory.h"
-#include "../ChainDevKit/Virtual Machine/filecontrol.h"
+#include "../ChainDevKit/Compiler/loggers/terminal.h"
+#include "../ChainDevKit/Virtual Machine/memory.h"
 #include "chainmacro.h"
 #include "../TRex Encryption/trex.h"
 #include "../deprecated/deprecated_stringstream.h"
-#include "loggers/debug.h"
-#include "../Compiler/compiler.h"
-#include "../deprecated/deprecated_stringconstruct.h"
-#include "../AST/lexer_module.h"
-
-
+#include "../ChainDevKit/Compiler/loggers/debug.h"
+#include "../ChainDevKit/Compiler/compiler.h"
+#include "../Abstract Syntax Tree/lexer_module.h"
 
 _ccmain_ {
     _maindeclare_
+    auto result = chain::syntax_tree::extract_complex("Hello!!\\n\\n");
+    for (auto &i : *result){
+        std::cout << i << std::endl;
+    }
     if (_arguments_present){
         if (_direct_call_){ // checks if command was not run via the terminal
             _set_file_direct_call_;
             file_line = chain::file::invoke_file(read_file); // returns the file in a string vector
-            for (int i=0; i<file_line->size(); i++){
+            std::cout.flush();
+            /*for (auto && i : *file_line){
                 chain::line++;
-                std::vector<chain::string_construct> * parsed = chain::sstream::string_parser((file_line->at(i))); // returns a vector of string_construct with operator information
+                std::vector<chain::string_construct> * parsed = chain::sstream::string_parser(i); // returns a vector of string_construct with operator information
                 chain::debug::print_parser(*parsed);
+            }*/
+            for (auto &i : *file_line){
+                std::cout << i << std::endl;
+                std::cout.flush();
             }
             chain::terminal::compilation_success();
             return 0;
@@ -45,8 +50,9 @@ _ccmain_ {
         }
 
         if (_argument_ == "-chainvm"){
-
+            chain::install::install_update();
         }
+
 
     } else {
         // chain::terminal::event_loop();

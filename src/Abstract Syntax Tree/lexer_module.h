@@ -30,6 +30,8 @@
 #include "chain-algorithms.h"
 #include <cctype>
 #include <typeinfo>
+#include "../ChainDevKit/Virtual Machine/memory.h"
+#include "../ChainDevKit/Compiler/loggers/error.h"
 
 
 

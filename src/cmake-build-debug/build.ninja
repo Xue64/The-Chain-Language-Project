@@ -49,11 +49,11 @@ cmake_ninja_workdir = C$:/Users/Rufelle/CLionProjects/CubeClub$ RS-ASM/src/cmake
 
 build cmake_object_order_depends_target_CubeClub_RS_ASM: phony || CMakeFiles/CubeClub_RS_ASM.dir
 
-build CMakeFiles/CubeClub_RS_ASM.dir/chain.cpp.obj: CXX_COMPILER__CubeClub_RS_ASM_Debug C$:/Users/Rufelle/CLionProjects/CubeClub$ RS-ASM/src/chain.cpp || cmake_object_order_depends_target_CubeClub_RS_ASM
-  DEP_FILE = CMakeFiles\CubeClub_RS_ASM.dir\chain.cpp.obj.d
+build CMakeFiles/CubeClub_RS_ASM.dir/Main_Module/chain.cpp.obj: CXX_COMPILER__CubeClub_RS_ASM_Debug C$:/Users/Rufelle/CLionProjects/CubeClub$ RS-ASM/src/Main$ Module/chain.cpp || cmake_object_order_depends_target_CubeClub_RS_ASM
+  DEP_FILE = CMakeFiles\CubeClub_RS_ASM.dir\Main_Module\chain.cpp.obj.d
   FLAGS = -g -std=gnu++14
   OBJECT_DIR = CMakeFiles\CubeClub_RS_ASM.dir
-  OBJECT_FILE_DIR = CMakeFiles\CubeClub_RS_ASM.dir
+  OBJECT_FILE_DIR = CMakeFiles\CubeClub_RS_ASM.dir\Main_Module
 
 
 # =============================================================================
@@ -63,7 +63,7 @@ build CMakeFiles/CubeClub_RS_ASM.dir/chain.cpp.obj: CXX_COMPILER__CubeClub_RS_AS
 #############################################
 # Link the executable CubeClub_RS_ASM.exe
 
-build CubeClub_RS_ASM.exe: CXX_EXECUTABLE_LINKER__CubeClub_RS_ASM_Debug CMakeFiles/CubeClub_RS_ASM.dir/chain.cpp.obj
+build CubeClub_RS_ASM.exe: CXX_EXECUTABLE_LINKER__CubeClub_RS_ASM_Debug CMakeFiles/CubeClub_RS_ASM.dir/Main_Module/chain.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\CubeClub_RS_ASM.dir

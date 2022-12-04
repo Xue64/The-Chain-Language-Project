@@ -4,7 +4,7 @@
 
 #ifndef CUBECLUB_RS_ASM_COMMANDSTREAM_H
 #define CUBECLUB_RS_ASM_COMMANDSTREAM_H
-#include "Chain Runtime Environment (ChainVM)/memory.h"
+#include "../../Virtual Machine/memory.h"
 #include "../../../deprecated/deprecated_stringstream.h"
 #include "../../../Main Module/chainmacro.h"
 

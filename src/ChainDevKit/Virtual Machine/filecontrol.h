@@ -14,7 +14,7 @@
 #include <string>
 #include <cstring>
 #include <iostream>
-#include "loggers/error.h"
+#include "../Compiler/loggers/error.h"
 #include <vector>
 #include <memory>
 
@@ -43,22 +43,25 @@ namespace chain{
         }
 
 
-        std::vector<std::string>* invoke_file(std::string f_name){
+       auto invoke_file(std::string f_name){
+           std::cout.flush();
             file_name = f_name;
-            make_nullvector;
+            make_nullvector_ptr;
             std::unique_ptr<std::fstream> bytecode = std::make_unique<std::fstream>();
             bytecode->open(file_name, std::ios::in);
             if (!(*bytecode)){
                 chain::throw_error::file_not_found();
-                return nullvector;
+                return nullvector__;
             }
             std::string file_extension = parse_extension(file_name);
             if (file_extension!=".link" && file_extension!=".cbit"){
                 chain::throw_error::invalid_file_extension();
-                return nullvector;
+                return nullvector__;
             }
-            std::vector<std::string> * file_parsed = new std::vector<std::string>();
+            std::unique_ptr<std::vector<std::string>> file_parsed = std::make_unique<std::vector<std::string>>();
+            std::cout << "BUFFER START HERE\n";
             while (true){
+                std::cout << "PRESTATE BUFFER ";
                 if (bytecode->eof()){
                     break;
                 }
@@ -67,6 +70,9 @@ namespace chain{
                 if (stream.find_first_not_of(' ')==std::string::npos){
                     continue;
                 }
+                line++;
+                std::cout.flush();
+                std::cout << "BUFFER" << line << std::endl;
                 file_parsed->push_back(stream);
             }
             return file_parsed;

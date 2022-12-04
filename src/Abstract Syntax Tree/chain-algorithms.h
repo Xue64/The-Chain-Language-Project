@@ -46,7 +46,7 @@ namespace chain{
     struct Complex_String{ // struct for complex words i.e., "hello," will be turned to -> hello and ,
         std::string string_1;
         std::string string_2;
-        boolean exists;
+        bool exists;
     };
 
     Complex_String complex_word(std::string str){
