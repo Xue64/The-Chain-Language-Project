@@ -9,7 +9,9 @@
 #include "../Abstract Syntax Tree/lexer_module.h"
 
 _ccmain_ {
-    _maindeclare_
+    auto memory = new chain::Memory();
+    std::unique_ptr<std::vector<std::string>> file_line;
+    chain::Compiler * compiler = new chain::Compiler(memory);
     auto result = chain::syntax_tree::extract_complex("Hello!!\\n\\n");
     for (auto &i : *result){
         std::cout << i << std::endl;
@@ -40,7 +42,7 @@ _ccmain_ {
             chain::terminal::setup();
             chain::version_control();
             std::cout << "We invoke the Chain Compiler\n";
-            _set_file_;
+            _set_file_
             file_line = chain::file::invoke_file(read_file); // returns the file in a string vector
             for (int i=0; i<file_line->size(); i++){
                 std::vector<chain::string_construct> * parsed = chain::sstream::string_parser((*file_line)[i]); // returns a vector of string_construct with operator information

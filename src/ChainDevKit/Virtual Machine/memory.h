@@ -12,8 +12,13 @@
 namespace chain {
 
 
+
+
     class Memory {
+
     public:
+
+
         std::map<std::string, bool*> * label;
         bool ** RAM, * AC, * R, * PC, * AR, * ACx, * ACy, * Rx, * Ry;
         std::vector<std::string> * register_list;
@@ -25,13 +30,12 @@ namespace chain {
         constexpr static int BASIC_CAPACITY = 8; // 8-bit capacity
         constexpr static int ADVANCED_CAPACITY = 16;
         int Z{};
-
+    public:
         Memory(){
             RAM = (bool**)malloc(sizeof(bool*)*MEMORY_CAPACITY);
             for (int i=0; i<MEMORY_CAPACITY; i++){
                 RAM[i] = new bool[8];
             }
-
             // REGISTERS
             AC = new bool[ADVANCED_CAPACITY];
             R = new bool[ADVANCED_CAPACITY];
@@ -48,6 +52,7 @@ namespace chain {
             initiateRegisterLabels();
 
         }
+    public:
 
         void clearMemory(){
             for (int i=0; i<MEMORY_CAPACITY; i++){
